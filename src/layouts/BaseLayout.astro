@@ -1,0 +1,98 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Aplicación de aplicación y calificación de la escala EPIPP" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap");
+
+  :root {
+    /* Paleta: tonos tierra/sage — evocan crianza, hogar, calidez sin caer en el cream-terracotta genérico */
+    --color-bg: #f7f5ef;
+    --color-paper: #ffffff;
+    --color-ink: #2b2a26;
+    --color-ink-soft: #5c5a52;
+    --color-sage: #5d7a63;
+    --color-sage-dark: #3f5944;
+    --color-clay: #b5613f;
+    --color-clay-soft: #f0ddd3;
+    --color-line: #e2ddd0;
+    --color-warn-bg: #fbf0d9;
+    --color-warn-border: #e3c373;
+
+    --font-display: "Fraunces", "Georgia", serif;
+    --font-body: "Source Sans 3", system-ui, sans-serif;
+
+    --radius: 14px;
+    --shadow-soft: 0 4px 20px rgba(43, 42, 38, 0.06);
+    --shadow-card: 0 8px 30px rgba(43, 42, 38, 0.08);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  a {
+    color: var(--color-sage-dark);
+  }
+
+  button {
+    font-family: var(--font-body);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-sage);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
